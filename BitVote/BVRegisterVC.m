@@ -10,8 +10,10 @@
 #import <Parse/Parse.h>
 #import "BVUser.h"
 #import <SLScrollViewKeyboardSupport.h> 
+#import <MBProgressHUD/MBProgressHUD.h>
 
-@interface BVRegisterVC () <UITextFieldDelegate>
+
+@interface BVRegisterVC () <UITextFieldDelegate, MBProgressHUDDelegate>
 
 @property (weak,nonatomic) IBOutlet UITextField * textFieldFirstName;
 @property (weak,nonatomic) IBOutlet UITextField * textFieldLastName;
@@ -29,6 +31,9 @@
 @end
 
 @implementation BVRegisterVC
+{
+    MBProgressHUD * HUD;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,14 +54,52 @@
 
 - (void) initializeUser:(BVUser *) user
 {
-    BTCKey * key = [[BTCKey alloc] init];
-    NSLog(@"%@, %@",key.privateKey, key.publicKey);
-    user.publicKey = key.address.string;
-    user.privateKey = key.privateKeyAddress.string;
-    [user saveInBackground];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"registrationSuccesful"
-                                                        object:nil];
+    [self showHUD:@"Registering.."];
+    NSURL *URL = [NSURL URLWithString:@"https://api.coinprism.com/v1/account/createaddress"];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    [request setHTTPMethod:@"POST"];
+    
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"yairszarf" forHTTPHeaderField:@"X-Coinprism-Username"];
+    [request setValue:@"hackathonPassword" forHTTPHeaderField:@"X-Coinprism-Password"];
+    
+    [request setHTTPBody:[[NSString stringWithFormat:@"{\"alias\": \"Voter: \"%@%@}",user.firstName, user.lastName] dataUsingEncoding:NSUTF8StringEncoding]];
+                          
+      NSURLSession *session = [NSURLSession sharedSession];
+      NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+          completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+      {
+                                                            
+        if (error) {
+            // Handle error...
+            return;
+        }
+        
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+//            NSLog(@"Response HTTP Status code: %ld\n", (long)[(NSHTTPURLResponse *)response statusCode]);
+//            NSLog(@"Response HTTP Headers:\n%@\n", [(NSHTTPURLResponse *)response allHeaderFields]);
+        }
+        
+//        NSString* body = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"Response Body:\n%@\n", body);
+        NSError * jsonError;
+        NSDictionary * JSON = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
+
+          user.publicKey = JSON[@"bitcoin_address"];
+          user.privateKey = JSON[@"private_key"];
+          user.assetAddress = JSON[@"asset_address"];
+          [user saveInBackground];
+          [[NSNotificationCenter defaultCenter] postNotificationName:@"registrationSuccesful"
+                                                              object:nil];
+          [HUD hide:YES];
+    }];
+    [task resume];
+
 }
+
+
+
 
 
 - (IBAction)tappedCancel:(UIButton*)sender
@@ -177,6 +220,21 @@
             [control endEditing:YES];
         }
     }
+}
+
+- (void)showHUD:(NSString *) message
+{
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    
+    // Set custom view mode
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.color = [UIColor colorWithWhite:0.000 alpha:0.600];
+    HUD.delegate = self;
+    HUD.labelText = message;
+    [HUD setAnimationType:MBProgressHUDAnimationZoomIn];
+    
+    [HUD show:YES];
 }
 
 @end

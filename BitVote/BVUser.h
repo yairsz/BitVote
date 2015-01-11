@@ -14,6 +14,7 @@
 
 @property (strong,nonatomic) NSString * publicKey;
 @property (strong,nonatomic) NSString * privateKey;
+@property (strong,nonatomic) NSString * assetAddress;
 @property (strong,nonatomic) NSString * firstName, *lastName;
 @property (strong,nonatomic) NSString * voterID;
 @property (strong,nonatomic) PFFile * thumbPrint;
