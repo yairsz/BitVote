@@ -1,0 +1,13 @@
+BitVote
+Asset ID: AemejeTG4LwuaCDu4HgYPp3zGBbkMjrvPA
+
+
+{
+"keys": [{
+"addr": "1HkV3wxQD1AjEQyXsnUYGp3f28p8Jfc5NV",
+"priv": "L4h7E6GNxh8KBoqJ9gVjnkwY7jBY5WV8i2C4q29Rg4fzidGXVRaH"
+}, {
+"addr": "1JWP6bWUt2mvBfUEGBNfwWcV7zehQ8uLLH",
+"priv": "KxtmGQfbYAW4qQ6Kf7CWLaGEbY583sFmU3rVCT5hmnzB2yMjLMGv"
+}]
+}
