@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "BitVote": {
+            "applicationId": "vdBJnnYkkdrXV4Fo5pbpOB8YB7X7btL9OE6HDga2", 
+            "masterKey": "WbV81Be6GTz0V2J8ZXdAgUkB24WKjZ9E4iSoavdn"
+        }, 
+        "_default": {
+            "link": "BitVote"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.3"
+    }
+}

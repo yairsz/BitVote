@@ -370,7 +370,7 @@ the front of your right thumb.</string>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SR1-6K-udI">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -492,12 +492,12 @@ the following candidate:</string>
                                     <action selector="tappedCancel:" destination="mcq-de-2Vm" eventType="touchUpInside" id="6LB-dj-tGq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2J-0y-UKS">
-                                <rect key="frame" x="0.0" y="387" width="414" height="21"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2J-0y-UKS">
+                                <rect key="frame" x="0.0" y="425" width="414" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="qOf-rZ-Tsf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -522,7 +522,7 @@ the following candidate:</string>
                             <constraint firstAttribute="width" secondItem="o2J-0y-UKS" secondAttribute="width" id="G8e-pL-HZa"/>
                             <constraint firstAttribute="centerX" secondItem="MsN-KF-gZ4" secondAttribute="centerX" id="Gh7-hI-RPQ"/>
                             <constraint firstAttribute="centerX" secondItem="o2J-0y-UKS" secondAttribute="centerX" id="HSd-g0-g8R"/>
-                            <constraint firstItem="o2J-0y-UKS" firstAttribute="top" secondItem="MsN-KF-gZ4" secondAttribute="bottom" constant="-28" id="JZr-bs-RoD"/>
+                            <constraint firstItem="o2J-0y-UKS" firstAttribute="top" secondItem="MsN-KF-gZ4" secondAttribute="bottom" constant="10" id="JZr-bs-RoD"/>
                             <constraint firstItem="cSh-v1-bSc" firstAttribute="width" secondItem="HlB-If-d5W" secondAttribute="width" multiplier="0.45" id="KCb-HX-PPv"/>
                             <constraint firstItem="OEX-EK-U0j" firstAttribute="top" secondItem="cSh-v1-bSc" secondAttribute="bottom" constant="20.5" id="LEi-Mq-Abj"/>
                             <constraint firstItem="4BV-nK-glI" firstAttribute="top" secondItem="hvS-k8-CNa" secondAttribute="bottom" constant="-20" id="NEe-Kh-gAp"/>

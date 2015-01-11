@@ -28,7 +28,6 @@
     [Parse setApplicationId:PARSE_APP_ID
                   clientKey:PARSE_CLIENT_KEY];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
     return YES;
 }
 
@@ -59,5 +58,38 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+//- (void) populateCandidates
+//{
+//    NSDictionary * candidates = @{
+//                                  @"Main address" : @"1HkV3wxQD1AjEQyXsnUYGp3f28p8Jfc5NV",
+//                                  @"PartyPeople" : @"1F3zpKpBEWuCKcerPwcgkBf4uaJBMtLEQd",
+//                                  @"blackjincrypto" : @"1JmHqfC35PWxVfvSvXLhaiSXzHvieT17L3",
+//                                  @"Wyncode" : @"19VJRhQWw68YULWbDmXGCTvZRtYy1HMAvc",
+//                                  @"Kodelia" : @"1C8uGvm49sDZw9FuCqziagSgNyYuU3QBqu",
+//                                  @"FrostWire" : @"1PmWPxe2yFkonqSJuTxzVNUTaX6dyj5Mmq",
+//                                  @"Prestashop - 42" : @"1if8oU3Du4ivjP8kwDteRJqgKVuFfqPun",
+//                                  @"PopCode" : @"1GeWA7no9QvCjayy8PE9o9RKJ3pwzG5RGL",
+//                                  @"BitFlo" : @"1NCSBpWbxm88J9sotT2hNTmxyE37pnx14h",
+//                                  @"Project ABE" : @"131QaU1BQquiW5HGf1nhMNKh8jtNm64Zxp",
+//                                  @"Team Democracy" : @"1MXraDzgVswaU3GFkBNi5tobXSstfC8ZC2",
+//                                  @"AudioBits" : @"1CRgtu6gQ3ZUf48j5WASgDwE5ibNd24pYu",
+//                                  @"PayByFriend" : @"19i1Ec1eR4SvKo332spj6n7QFQXLBJdwuc",
+//                                  @"Team microtip extension" : @"1E6uRFALz6eiD5g7fWMyMb9FYTgvDF846v",
+//                                  @"Silver Wind" : @"1DMEGYAwEh2EHu1eBcdoypKTFaon41MmuZ",
+//                                  @"BitPlayers" : @"16pMYaFNwM4mYRezkuXcMv5GMESH1aam8q",
+//                                  @"BitRocket" : @"1AyidGSyxWEDtwKtHXfuw28RKjt7bGBNve",
+//                                  @"Decentral Team" : @"1Bg4q2vdpXobvPRu41rQEYfN5wFiHtuQQD",
+//                                  @"blockchain_badges" : @"1N8fQ1D9R4Nv7JQmxPddpHMAnu7DXLKwFE",
+//                                  @"Bitcoin Exchange" : @"14QhxwpwCGxya2RhPLSXCLTTdegF54UE3H"
+//                                  };
+//    for (NSString * key in [candidates allKeys]) {
+//        BVCandidate * can = [BVCandidate object];
+//        can.fullName = key;
+//        can.publicAddress = candidates[key];
+//        can.electionID = @"Hackathon";
+//        [can save];
+//    }
+//}
 
 @end

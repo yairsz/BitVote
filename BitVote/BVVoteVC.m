@@ -28,17 +28,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    BVCandidate * can = [BVCandidate object];
-//    can.fullName = @"name";
-//    can.publicAddress = @"address";
-//    can.electionID = @"Hackathon";
-//    [can save];
     
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     self.tableView.layoutMargins = UIEdgeInsetsZero;
     // Do any additional setup after loading the view.
     PFQuery * query = [PFQuery queryWithClassName:@"BVCandidate"];
     [query whereKey:@"electionID" equalTo:@"Hackathon"];
+    [query orderByAscending:@"fullName"];
     [self showHUD:@"Fetching Candidates"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         self.candidates = objects;
