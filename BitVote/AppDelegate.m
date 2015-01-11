@@ -7,6 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "BVUser.h"
+#import "BVCandidate.h"
+
+#define PARSE_APP_ID @"vdBJnnYkkdrXV4Fo5pbpOB8YB7X7btL9OE6HDga2"
+#define PARSE_CLIENT_KEY @"mrWBIasJTTnoB0mjZkcOhpveBbfYIhODKFQr139H"
 
 @interface AppDelegate ()
 
@@ -17,7 +22,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [self registerModelClasses];
+    [Parse setApplicationId:PARSE_APP_ID
+                  clientKey:PARSE_CLIENT_KEY];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     return YES;
+}
+
+- (void) registerModelClasses
+{
+    [BVUser registerSubclass];
+    [BVCandidate registerSubclass];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

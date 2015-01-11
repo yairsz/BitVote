@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BVCandidate.h"
 
 @interface BVConfirmVC : UIViewController
-
+@property (strong, nonatomic) BVCandidate * selectedCandidate;
 @end

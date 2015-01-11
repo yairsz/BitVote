@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <CoreBitcoin/CoreBitcoin.h>
 
 @interface BVUser : PFUser
+
+@property (strong,nonatomic) NSString * publicKey;
+@property (strong,nonatomic) NSString * privateKey;
+@property (strong,nonatomic) NSString * firstName, *lastName;
+@property (strong,nonatomic) NSString * voterID;
+@property (strong,nonatomic) PFFile * thumbPrint;
 
 @end

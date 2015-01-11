@@ -7,16 +7,27 @@
 //
 
 #import "BVConfirmVC.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
-@interface BVConfirmVC ()
+@interface BVConfirmVC () <MBProgressHUDDelegate>
+
+@property (weak,nonatomic) IBOutlet UIButton * voteButton;
+@property (weak,nonatomic) IBOutlet UIButton * backButton;
+@property (weak,nonatomic) IBOutlet UILabel * candidateLabel;
+@property (weak,nonatomic) IBOutlet UILabel * addressLabel;
 
 @end
 
 @implementation BVConfirmVC
+{
+    MBProgressHUD *HUD;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.candidateLabel.text = self.selectedCandidate.fullName;
+    self.addressLabel.text = self.selectedCandidate.publicAddress;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +35,37 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)showHUD:(NSString *) message
+{
+    if (!HUD) {
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+        
+    }
+    
+    // Set custom view mode
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.color = [UIColor colorWithWhite:0.000 alpha:0.800];
+    HUD.delegate = self;
+    HUD.labelText = message;
+    [HUD setAnimationType:MBProgressHUDAnimationZoomIn];
+    
+    [HUD show:YES];
 }
-*/
 
+-(IBAction)tappedVote:(id)sender
+{
+    [self performVote];
+}
+
+- (IBAction)tappedBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void) performVote
+{
+    [self showHUD:@"Performing Vote"];
+}
 @end

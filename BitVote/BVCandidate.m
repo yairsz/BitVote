@@ -9,5 +9,11 @@
 #import "BVCandidate.h"
 
 @implementation BVCandidate
+@dynamic fullName,publicAddress,electionID;
+
++ (NSString *)parseClassName {
+    return @"BVCandidate";
+}
+
 
 @end

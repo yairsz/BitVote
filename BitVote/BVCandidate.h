@@ -8,6 +8,10 @@
 
 #import <Parse/Parse.h>
 
-@interface BVCandidate : PFObject
+@interface BVCandidate : PFObject <PFSubclassing>
+
+@property (strong,nonatomic) NSString * fullName;
+@property (strong,nonatomic) NSString * publicAddress;
+@property (strong,nonatomic) NSString * electionID;
 
 @end

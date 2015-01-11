@@ -9,5 +9,7 @@
 #import "BVUser.h"
 
 @implementation BVUser
+@dynamic publicKey,privateKey,firstName,lastName,voterID, thumbPrint;
+
 
 @end
